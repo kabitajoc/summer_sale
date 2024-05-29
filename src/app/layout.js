@@ -1,7 +1,18 @@
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
+import { Lobster } from "next/font/google";
 import "./globals.css";
+import Nav from "./_sections/Nav/page";
+import { cn } from "@/lib/utils";
+import Footer from "./_sections/Footer/page";
 
-const inter = Inter({ subsets: ["latin"] });
+const lobster = Lobster({
+  weight: "400",
+  display: "swap",
+  variable: "--font-lobster",
+  subsets: ["latin"],
+});
+
+const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -11,7 +22,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={cn("max-w-screen-xl container", lobster.variable)}>
+        <Nav />
+        {children}
+      </body>
     </html>
   );
 }
